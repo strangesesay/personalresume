@@ -53,11 +53,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Animate skill circles
+    // Animate skill circles and language circles
     const statCircles = document.querySelectorAll('.stat-circle');
+    const languageCircles = document.querySelectorAll('.language-circle');
     
     function animateCircles() {
         statCircles.forEach(circle => {
+            const percent = circle.getAttribute('data-percent');
+            const svgCircle = circle.querySelector('svg circle:nth-child(2)');
+            
+            if (svgCircle) {
+                const radius = svgCircle.r.baseVal.value;
+                const circumference = 2 * Math.PI * radius;
+                const offset = circumference - (percent / 100) * circumference;
+                
+                svgCircle.style.strokeDashoffset = offset;
+            }
+        });
+    }
+    
+    function animateLanguageCircles() {
+        languageCircles.forEach(circle => {
             const percent = circle.getAttribute('data-percent');
             const svgCircle = circle.querySelector('svg circle:nth-child(2)');
             
@@ -82,6 +98,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (entry.target.classList.contains('stat-circle')) {
                     animateCircles();
                 }
+                if (entry.target.classList.contains('language-circle')) {
+                    animateLanguageCircles();
+                }
                 
                 entry.target.classList.add('animated');
             }
@@ -89,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // Observe elements that should animate when scrolled to
-    document.querySelectorAll('.stat-circle, .skill-level, .timeline-item, .experience-card, .activity-card').forEach(el => {
+    document.querySelectorAll('.stat-circle, .language-circle, .skill-level, .timeline-item, .experience-card, .activity-card').forEach(el => {
         observer.observe(el);
     });
     

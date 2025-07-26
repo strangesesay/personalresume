@@ -679,6 +679,100 @@ header {
     animation: animate-skill 1.5s ease-in-out forwards;
 }
 
+/* Languages Section */
+.languages {
+    background-color: var(--card-bg);
+}
+
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.language-card {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--bg-color);
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.language-circle {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px;
+}
+
+.language-circle svg {
+    width: 140px;
+    height: 140px;
+    transform: rotate(-90deg);
+}
+
+.language-circle svg circle {
+    fill: none;
+    stroke-width: 8;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    stroke-linecap: round;
+    transform: translate(5px, 5px);
+}
+
+.language-circle svg circle:nth-child(1) {
+    stroke-dashoffset: 0;
+    stroke: #f1f1f1;
+}
+
+.language-circle svg circle:nth-child(2) {
+    stroke: var(--primary-color);
+    animation: animate-language-circle 2s ease-in-out forwards;
+}
+
+.language-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.language-icon i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.language-card h3 {
+    font-size: 1.4rem;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.language-card p {
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+@keyframes animate-language-circle {
+    from {
+        stroke-dashoffset: 440;
+    }
+}
+
 /* Contact Section */
 .contact-content {
     display: flex;
